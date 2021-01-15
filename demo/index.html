@@ -13,46 +13,6 @@
     These are not required for the angular-multi-slider, just for this demo.</p>
   Developer Page - <a href="http://keithfimreite.com/angular-multi-slider-directive.aspx" target="_blank">Demo Site</a>
   <article>
-    <h2>Single Slider - Hover / Grab Bubble</h2>
-    <fieldset class="row">
-      <section class="col-sm-4">
-        <pre>
-          {{ slider | json}}
-        </pre>
-      </section>
-      <section class="col-sm-6 padding-10">
-        <div multi-slider
-             floor="0"
-             ceiling="500"
-             step="10"
-             precision="2"
-             bubbles="false"
-             ng-model="slider"></div>
-      </section>
-    </fieldset>
-  </article>
-  <hr/>
-  <article>
-    <h2>Adding Sliders After Creation</h2>
-    <fieldset class="row">
-      <section class="col-sm-4">
-        <pre>
-          {{ addSlider | json}}
-        </pre>
-      </section>
-      <section class="col-sm-6 padding-10" style="padding-top: 80px;">
-        <div multi-slider
-             floor="0"
-             ceiling="500"
-             step="10"
-             precision="2"
-             bubbles="true"
-             ng-model="addSlider"></div>
-        <button class="btn btn-info" ng-click="addAnother()">Add another Slider</button>
-      </section>
-    </fieldset>
-  </article>
-  <hr/>
   <article>
     <h2>Multiple Sliders with defined Colors in a Form - Persistent Bubbles - Hidden</h2>
     <form name="sliderForm" id="sliderForm" novalidate autocomplete="off">
@@ -65,160 +25,21 @@
         <section class="col-sm-6 padding-10">
           <multi-slider name="mySlider"
                         floor="0"
-                        step="10"
-                        precision="2"
-                        ceiling="500"
-                        bubbles="true"
-                        ng-model="sliders"
-                        ng-hide="hideSliders"
-                        style="margin-top:60px">
-          </multi-slider>
-          <multi-slider-key ng-model="sliders" ng-hide="hideSliders"></multi-slider-key>
-        </section>
-        <section class="col-sm-2">
-          <p>
-            Form Dirty: {{ sliderForm.$dirty }}
-            <br/>
-            Form Pristine: {{ sliderForm.$pristine }}
-            <br/>
-            Slider Dirty: {{ sliderForm.mySlider.$dirty }}
-            <br/>
-            Slider Pristine: {{ sliderForm.mySlider.$pristine }}
-            <br/>
-            Slider Hidden: {{ hideSliders }}<br/>
-            <label>Hide Slider:
-              <input type="checkbox" ng-model="hideSliders">
-            </label>
-           <br/>
-
-            *Slider Enabled / Hidden NOT Fully Working ->
-            <button type="button" class="btn btn-lg" ng-click="fileToggleVisibility()" ng-bind="'Set File slider visible to ' + !sliders[1].visible"
-                    ng-class="sliders[1].visible ? 'btn-primary' : 'btn-danger' "></button>
-            <br/>
-            <button type="button" class="btn btn-danger btn-lg" ng-click="fileToggleEnabled()" ng-bind="'Set File slider enabled to ' + !sliders[1].enabled"
-                    ng-class=" sliders[1].enabled ? 'btn-primary' : 'btn-danger' "></button>
-        </section>
-      </fieldset>
-    </form>
-  </article>
-  <hr/>
-  <article>
-    <h2>Multi-Slider in multiple UI Bootstrap Tabs</h2>
-    <form name="tabSliderForm" id="tabSliderForm" novalidate autocomplete="off">
-      <fieldset class="row">
-        <uib-tabset>
-          <uib-tab heading="Tab 1" active="activeTabs[0]">
-            <div class="panel panel-default">
-              <div class="panel-body">Tab 1 Content for angular multiple sliders<br/><br/>
-                <multi-slider name="tabSlider1"
-                              floor="0"
-                              step="1"
-                              precision="2"
-                              ceiling="365"
-                              bubbles="true"
-                              ng-model="tabSliders"
-                              ng-if="activeTabs[0]"
-                              style="margin-top:80px">
-                </multi-slider>
-              </div>
-            </div>
-          </uib-tab>
-          <uib-tab heading="Tab 2" active="activeTabs[1]">
-            <div class="panel panel-default">
-              <div class="panel-body">Tab 2 Content for angular multiple sliders<br/><br/>
-                <section class="col-sm-6 padding-10">
-                  <multi-slider name="tabSlider2"
-                                floor="0"
-                                step="1"
-                                precision="2"
-                                ceiling="365"
-                                bubbles="true"
-                                ng-model="tabSliders"
-                                ng-if="activeTabs[1]"
-                                style="margin-top:80px">
-                  </multi-slider>
-                  <multi-slider-key ng-model="tabSliders"></multi-slider-key>
-                </section>
-              </div>
-            </div>
-          </uib-tab>
-        </uib-tabset>
-      </fieldset>
-    </form>
-  </article>
-  <hr/>
-  <article>
-    <h2>Sliders in a UI Bootstrap modal</h2>
-    <button type="button" ng-click="openModal()" class="btn btn-default btn-lg">Open Modal!</button>
-  </article>
-  <article>
-    <h2>Adjusting Floor / Ceiling end points of Slider after rendered (Maintain slider Order)</h2>
-    <form name="ceilingForm" id="ceilingForm" novalidate autocomplete="off">
-      <fieldset class="row">
-
-        <section class="col-sm-4">
-        <pre>
-          {{ tabSliders | json}}
-        </pre>
-        </section>
-        <section class="col-sm-6 padding-10">
-          <multi-slider name="ceilingSlider"
-                        floor="{{floor}}"
                         step="1"
                         precision="2"
-                        ceiling="{{ceiling}}"
+                        ceiling="100"
                         bubbles="true"
-                        maintain-order="true"
-                        ng-model="tabSliders"
-                        style="margin-top:120px">
+                        ng-model="sliders"
+                        style="margin-top:60px">
           </multi-slider>
-          <multi-slider-key ng-model="ceilingSliders"></multi-slider-key>
-          <section class="col-sm-12">
-            <label class="btn btn-primary" ng-model="floor" uib-btn-radio="0">floor 0</label>
-            <label class="btn btn-primary" ng-model="floor" uib-btn-radio="50">floor 50</label>
-            <label class="btn btn-primary" ng-model="ceiling" uib-btn-radio="100">Ceiling 100</label>
-            <label class="btn btn-primary" ng-model="ceiling" uib-btn-radio="365">Ceiling 365</label>
-          </section>
         </section>
       </fieldset>
     </form>
   </article>
-  <article>
-    <h2>Date Filter Values and End Points of Multiple Slider</h2>
-    <form name="ceilingForm" id="dateForm" novalidate autocomplete="off">
-      <fieldset class="row">
-        <section class="col-sm-4">
-        <pre>
-          {{ dateSliders | json}}
-        </pre>
-        </section>
-        <section class="col-sm-6 padding-10">
-          <multi-slider name="dateSlider"
-                        floor="{{dateFloor}}"
-                        step="86400000"
-                        precision="2"
-                        ceiling="{{dateCeiling}}"
-                        bubbles="true"
-                        display-filter="date : 'shortDate'"
-                        maintain-order="false"
-                        ng-model="dateSliders"
-                        style="margin-top:200px">
-          </multi-slider>
-          <multi-slider-key ng-model="dateSliders" display-filter="date : 'shortDate'"></multi-slider-key>
-          <section class="col-sm-12">
-            <label class="btn btn-primary" ng-model="dateFloor" uib-btn-radio="getDateOffset(0)">floor 0</label>
-            <label class="btn btn-primary" ng-model="dateFloor" uib-btn-radio="getDateOffset(50)">floor 50 days</label>
-            <label class="btn btn-primary" ng-model="dateCeiling" uib-btn-radio="getDateOffset(100)">Ceiling 100 days</label>
-            <label class="btn btn-primary" ng-model="dateCeiling" uib-btn-radio="getDateOffset(365)">Ceiling 1 year</label>
-          </section>
-        </section>
-      </fieldset>
-    </form>
-  </article>
-
+  
 </div>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
+<script src="https:////ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+<script src="https:////ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
 <script src="../multislider.js"></script>
 <script src="app.js"></script>
